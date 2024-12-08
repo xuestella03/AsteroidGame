@@ -8,8 +8,16 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.CompareTag("TargetPlanet"))
         {
-            //Debug.Log("got to target, game should be done now");
-            GameManager.Instance.EndGame(true);
+            if (GameManager.Instance.ObjectiveChanged)
+            {
+                //Debug.Log("got to target, game should be done now");
+                GameManager.Instance.EndGame(true);
+            }
+            else
+            {
+                GameManager.Instance.EndGame(false);
+            }
+            
         }
         if (other.CompareTag("Enemy") || other.CompareTag("EnemyMissile") || other.CompareTag("Asteroid"))
         {

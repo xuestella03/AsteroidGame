@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject losePanel;
     public GameObject winPanel;
     public TextMeshProUGUI objectiveText;
-    // Start is called before the first frame update
+
+    public bool ObjectiveChanged;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         losePanel.SetActive(false);
         winPanel.SetActive(false);
         objectiveText.text = "KILL AN ENEMY";
+        ObjectiveChanged = false;
     }
 
     public void UpdateScore(bool didHit)
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         {
             audioSource.PlayOneShot(successSound);
             objectiveText.text = "GO TO PLANET";
+            ObjectiveChanged = true;
         }
         
     }
